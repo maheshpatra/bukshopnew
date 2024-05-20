@@ -3,9 +3,7 @@ import { StyleSheet, Text, View, Image, Dimensions, Pressable} from 'react-nativ
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator, CardStyleInterpolators} from '@react-navigation/native-stack';
 import {
-    AboutUs,
-    FAQs,
-    Home, Invoice, Profile,
+    Home, Invoice, 
     Return,
     Sale,
 } from "../Screens";

@@ -11,6 +11,7 @@ import {
   Profile,
   ReturnDetails,
   SaleDetails,
+  Main
 } from "../Screens";
 
 const Stack = createNativeStackNavigator();
@@ -79,13 +80,18 @@ const MainNavigation = (props) => {
         component={Forgot}
         options={{headerTitle: 'Forgot', headerShown: false}}
       />
-
+      
       <Stack.Screen
         name="Otp"
         component={Otp}
         options={{headerTitle: 'Enter Otp', headerShown: false}}
       />  
-      
+    
+      <Stack.Screen
+        name="Main"
+        component={Main}
+        options={horizontalAnimation}
+      />
       <Stack.Screen
         name="Profile"
         component={Profile}

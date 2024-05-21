@@ -7,6 +7,7 @@ import Styles from './style';
 import { Colors } from '../../Constants/Colors'
 import { Calibri } from '../../Constants/Fonts';
 import { Images } from '../../Constants/ImageIconContant';
+import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Picker } from '@react-native-picker/picker';
 import CheckBox from '@react-native-community/checkbox';
@@ -16,16 +17,21 @@ import { Icon } from 'react-native-basic-elements';
 import Swiper from "react-native-swiper";
 import { ImageSlider } from "react-native-image-slider-banner";
 import { SwipeListView } from 'react-native-swipe-list-view';
-
+import Modal from "react-native-modal";
 import Header from '../../Component/Header';
 import HeaderBack from '../../Component/HeaderBack';
+
 // create a component
 const SaleDetails = ({ props, route, navigation }) => {
   const [selectedClass, setSelectedClass] = useState();
   const [selectedSchool, setSelectedSchool] = useState();
   const [payment, setpaymet] = useState();
 
+  const [isModalVisible, setModalVisible] = useState(true);
 
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   const itemsArray = [
     { id: 1, name: 'Bengali' },
     { id: 2, name: 'Math' },
@@ -151,15 +157,14 @@ const SaleDetails = ({ props, route, navigation }) => {
                 <Picker.Item label="Online" value="Online" />
               </Picker>
             </View>
-            <View style={{ width: '45%', borderRadius: 5,  backgroundColor:Colors.primary, height: 45,alignItems:'center',justifyContent:'center' }}>
-              <Text style={{color:'#fff',fontWeight:'bold',fontSize:responsiveFontSize(2)}}>{'₹1250'}</Text>
+            <View style={{ width: '45%', borderRadius: 5, backgroundColor: Colors.primary, height: 45, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2) }}>{'₹1250'}</Text>
             </View>
           </View>
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => {
-              navigation.navigate('Main')
+            onPress={() => {setModalVisible(true)
             }}>
             <Text style={{ fontSize: responsiveFontSize(2.5), color: "#fff", fontFamily: Calibri.regular }}>
               SALE NOW
@@ -172,6 +177,35 @@ const SaleDetails = ({ props, route, navigation }) => {
 
 
       </ScrollView>
+
+      <Modal isVisible={isModalVisible}>
+        <TouchableOpacity onPress={()=>setModalVisible(false)} style={{ flex: 1, justifyContent: 'center' }}>
+          <View style={{  width: responsiveWidth(80), backgroundColor: '#fff', alignSelf: 'center', borderRadius: 10 }}>
+            <Image source={require('../../assets/images/tick.png')} style={{ height: responsiveWidth(20), width: responsiveWidth(20), alignSelf: 'center', marginTop: 20 }} />
+            <Text style={{ alignSelf: 'center', marginTop: 10, fontSize: responsiveFontSize(2.6), color: '#01B629' }}>Payment Confirmation</Text>
+            <View style={{ alignItems:'center',flexDirection: 'row',  width: '80%', alignSelf: 'center',  marginTop: 20, justifyContent: 'space-between' }}>
+              <Text style={{color:'#000',fontSize:responsiveFontSize(2)}}>Payment Mode</Text>
+              <Text  style={{color:'#000',fontSize:responsiveFontSize(2)}}>Cash</Text>
+            </View>
+            <View style={{ alignItems:'center',flexDirection: 'row',  width: '80%', alignSelf: 'center',  marginTop: 14, justifyContent: 'space-between' }}>
+              <Text style={{color:'#000',fontSize:responsiveFontSize(2)}}>Amount Paid</Text>
+              <Text  style={{color:'#000',fontSize:responsiveFontSize(2)}}>234234</Text>
+            </View>
+            <View style={{ alignItems:'center',flexDirection: 'row',  width: '80%', alignSelf: 'center',  marginTop: 14, justifyContent: 'space-between' }}>
+              <Text style={{color:'#000',fontSize:responsiveFontSize(2)}}>Bill Value</Text>
+              <Text  style={{color:'#000',fontSize:responsiveFontSize(2)}}>2344</Text>
+            </View>
+            <View style={{ alignItems:'center',flexDirection: 'row',  width: '80%', alignSelf: 'center',  marginTop: 14, justifyContent: 'space-between' }}>
+              <Text style={{color:'#000',fontSize:responsiveFontSize(2)}}>Payback Amount</Text>
+              <Text  style={{color:'#000',fontSize:responsiveFontSize(2)}}>345</Text>
+            </View>
+            <TouchableOpacity style={{flexDirection:'row',alignItems:'center',height:45,width:'80%',alignSelf:'center',justifyContent:'center',alignItems:'center',backgroundColor:Colors.primary,marginTop:15,borderRadius:20,marginBottom:20}} onPress={toggleModal}>
+            <Text style={{color:'#fff',fontSize:responsiveFontSize(1.9)}}>Swipe to Confirm & print</Text>
+            <Entypo style={{ padding:4,borderRadius:33,backgroundColor:'#fff',marginLeft:10 }} name='chevron-right' color={Colors.primary} size={24} onPress={() => setSelected(!selected)} />
+          </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+      </Modal>
     </View>
 
     // <SkeletonPlaceholder >

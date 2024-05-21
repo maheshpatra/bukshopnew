@@ -11,7 +11,8 @@ import {
   Profile,
   ReturnDetails,
   SaleDetails,
-  Main
+  Main,
+  Print
 } from "../Screens";
 
 const Stack = createNativeStackNavigator();
@@ -105,6 +106,11 @@ const MainNavigation = (props) => {
       <Stack.Screen
         name="SaleDetails"
         component={SaleDetails}
+        options={horizontalAnimation}
+      />
+      <Stack.Screen
+        name="Print"
+        component={Print}
         options={horizontalAnimation}
       />
      

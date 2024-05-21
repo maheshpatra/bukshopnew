@@ -10,4 +10,5 @@ export { default as Invoice } from "./invoice"
 export { default as Return } from "./return"
 export { default as ReturnDetails } from "./returndetails"
 export { default as SaleDetails } from "./saledetails"
+export { default as Print } from "./print"
 

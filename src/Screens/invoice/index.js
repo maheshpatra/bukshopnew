@@ -156,9 +156,9 @@ const Invoice = ({ props, route, navigation }) => {
             </View>
           )}
           renderHiddenItem={(data, rowMap) => (
-            <View style={{height:'94%',width:'25%',backgroundColor:'#01B629',justifyContent:'center',alignItems:'center',alignSelf:'flex-end'}}>
+            <TouchableOpacity onPress={()=>navigation.navigate('Print')} style={{height:'94%',width:'25%',backgroundColor:'#01B629',justifyContent:'center',alignItems:'center',alignSelf:'flex-end'}}>
              <Ionicons color={'green'} name='receipt' size={24} style={{padding:15,backgroundColor:'#fff',borderRadius:25}}/>
-            </View>
+            </TouchableOpacity>
           )}
           rightOpenValue={-responsiveWidth(25)}
         />
